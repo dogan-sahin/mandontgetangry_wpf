@@ -8,14 +8,6 @@
         Title="Awesome Man Don't Get Angry Game" Height="450" Width="800">
 
     <Window.Resources>
-        <Style x:Key="Black" TargetType="Grid">
-            <Setter Property="Background" Value="CadetBlue"/>
-        </Style>
-
-        <Style x:Key="White" TargetType="Grid">
-            <Setter Property="Background" Value="White"/>
-        </Style>
-
         <LinearGradientBrush x:Key="MenuBackground" StartPoint="0,0" EndPoint="1,9">
             <GradientStop Color="DarkGray" Offset="0.0"/>
             <GradientStop Color="White" Offset="0.5"/>
@@ -32,7 +24,6 @@
             <Setter Property="Menu.FontSize" Value="15"/>
             <Setter Property="Menu.FontWeight" Value="DemiBold"/>
         </Style>
-
     </Window.Resources>
 
     <Grid>
