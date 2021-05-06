@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 
 namespace ManDontGetAngryGame.Enums
 {
-    public enum ECellType
+    public enum ECellColor
     {
-        StartingGrid,
-        PlayingField,
-        SafeHouse,
+        White,
+        Red,
+        Green,
+        Blue,
+        Yellow,
         None
     }
 }

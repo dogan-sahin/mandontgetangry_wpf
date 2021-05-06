@@ -11,6 +11,7 @@ namespace ManDontGetAngryGame.Enums
         Green,
         Blue,
         Red,
-        Yellow
+        Yellow,
+        None
     }
 }
