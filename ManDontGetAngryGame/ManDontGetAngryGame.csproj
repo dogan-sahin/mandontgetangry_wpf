@@ -69,6 +69,11 @@
     <Compile Include="Enums\ECellColor.cs" />
     <Compile Include="Enums\ECellType.cs" />
     <Compile Include="Enums\EPieceColor.cs" />
+	<Compile Include="Events\CellStatusChangedEventArgs.cs" />
+    <Compile Include="Model\CellId.cs" />
+    <Compile Include="Model\CellModel.cs" />
+	<Compile Include="Model\IGameBoard.cs" />
+	<Compile Include="Model\IGameLogic.cs" />
     <Page Include="Views\GridCell.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
