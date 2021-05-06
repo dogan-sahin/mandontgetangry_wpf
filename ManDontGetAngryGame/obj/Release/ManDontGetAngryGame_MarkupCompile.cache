@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Dennis\.net Exercises\MiniProject\ManDontGetAngryGame\obj\Debug\
+C:\Dennis\.net Exercises\MiniProject\ManDontGetAngryGame\obj\Release\
 ManDontGetAngryGame
 none
 false
-DEBUG;TRACE
+TRACE
 C:\Dennis\.net Exercises\MiniProject\ManDontGetAngryGame\App.xaml
-2-1099676771
+11151548125
 
-6832836536
+5-2017746502
 13-1505183044
-Views\GridCell.xaml;Views\MainWindow.xaml;
+MainWindow.xaml;
 
-False
+True
 
