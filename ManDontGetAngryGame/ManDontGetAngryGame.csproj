@@ -56,6 +56,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Enums\EActivePlayer.cs" />
+    <Compile Include="ViewModels\CellStatusViewModel.cs" />
     <Compile Include="ViewModels\ICellStatusViewModel.cs" />
     <Compile Include="ViewModels\RelayCommand.cs" />
     <Compile Include="Views\GridCell.xaml.cs">
