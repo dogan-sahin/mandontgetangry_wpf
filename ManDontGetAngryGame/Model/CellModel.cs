@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ManDontGetAngryGame.Enums;
 
 namespace ManDontGetAngryGame.Model
 {
@@ -10,23 +11,25 @@ namespace ManDontGetAngryGame.Model
     {
         public int RowIndex { get; }
         public int ColIndex { get; }
-       // public EChessPieceType PieceType { get; private set; }
+       public ECellType CellType { get; private set; }
 
-       // public EChessPieceColor PieceColor { get; private set; }
+       public EPieceColor PieceColor { get; private set; }
 
-        // public ChessCellModel(int row, int col)
-        // {
-        //     RowIndex = row;
-        //     ColIndex = col;
-        //     // PieceType = EChessPieceType.Empty;
-        //     // PieceColor = EChessPieceColor.Empty;
-        // }
+       public ECellColor CellColor { get; private set; }
 
-        // public void SetPiece(EChessPieceType type, EChessPieceColor color)
-        // {
-        //     PieceType = type;
-        //     PieceColor = color;
-        // }
+        public CellModel(int row, int col, ECellType cellType, ECellColor cellColor)
+        {
+            RowIndex = row;
+            ColIndex = col;
+            CellType = cellType;
+            CellColor = cellColor;
+            PieceColor = EPieceColor.None;
+        }
+
+        public void SetPiece(EPieceColor color)
+        {
+            PieceColor = color;
+        }
 
         public CellId Identifier
         {
