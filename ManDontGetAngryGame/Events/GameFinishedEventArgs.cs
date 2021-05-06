@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ManDontGetAngryGame.Events
 {
-    public class CellStatusChangedEventArgs
+    public class GameFinishedEventArgs
     {
     }
 }

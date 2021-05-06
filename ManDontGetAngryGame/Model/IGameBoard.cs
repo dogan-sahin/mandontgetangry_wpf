@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ManDontGetAngryGame.Events;
 
 namespace ManDontGetAngryGame.Model
 {
@@ -12,7 +13,7 @@ namespace ManDontGetAngryGame.Model
 
         int NumCols { get; }
 
-       // event EventHandler<CellStatusChangedEventArgs> CellStatusChanged;
+       event EventHandler<CellStatusChangedEventArgs> CellStatusChanged;
 
         void InitializeBoard();
 

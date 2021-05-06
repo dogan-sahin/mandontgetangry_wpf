@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ManDontGetAngryGame.Enums
 {
-    enum EActivePlayer
+    public enum EActivePlayer
     {
         Green,
         Blue,

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ManDontGetAngryGame.Enums;
+using ManDontGetAngryGame.Events;
 
 namespace ManDontGetAngryGame.Model
 {
@@ -23,12 +24,12 @@ namespace ManDontGetAngryGame.Model
 
         EActivePlayer ActivePlayer { get; }
 
-        // event EventHandler<CellStatusChangedEventArgs> CellStatusChanged;
-        //
-        // event EventHandler<PieceThrownOutEventArgs> PieceThrownOut;
-        //
-        // event EventHandler<PieceFinishedEventArgs> PieceFinished;
-        //
-        // event EventHandler<GameEndedEventArgs> GameFinished;
+        event EventHandler<CellStatusChangedEventArgs> CellStatusChanged;
+        
+        event EventHandler<PieceThrownOutEventArgs> PieceThrownOut;
+        
+        event EventHandler<PieceFinishedEventArgs> PieceFinished;
+        
+        event EventHandler<GameFinishedEventArgs> GameFinished;
     }
 }

@@ -9,20 +9,20 @@ namespace ManDontGetAngryGame.Model
 {
     public class CellModel
     {
-        public int RowIndex { get; }
+        public int RowIndex { get; } 
         public int ColIndex { get; }
-       public ECellType CellType { get; private set; }
+       public ECellType CellType { get; set; }
 
        public EPieceColor PieceColor { get; private set; }
 
-       public ECellColor CellColor { get; private set; }
+       public ECellColor CellColor { get; set; }
 
-        public CellModel(int row, int col, ECellType cellType, ECellColor cellColor)
+        public CellModel(int row, int col)
         {
             RowIndex = row;
             ColIndex = col;
-            CellType = cellType;
-            CellColor = cellColor;
+            CellType = ECellType.None;
+            CellColor = ECellColor.White;
             PieceColor = EPieceColor.None;
         }
 
