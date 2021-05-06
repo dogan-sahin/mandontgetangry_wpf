@@ -55,6 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Enums\EActivePlayer.cs" />
     <Compile Include="Views\GridCell.xaml.cs">
       <DependentUpon>GridCell.xaml</DependentUpon>
     </Compile>
