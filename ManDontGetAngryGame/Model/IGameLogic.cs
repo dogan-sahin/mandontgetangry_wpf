@@ -3,17 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ManDontGetAngryGame.Enums;
 
 namespace ManDontGetAngryGame.Model
 {
-    public enum EActivePlayer
-    {
-        Green,
-        Blue,
-        Red,
-        Yellow
-    };
-
     public interface IGameLogic
     {
         int NumRows { get; }

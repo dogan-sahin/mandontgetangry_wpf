@@ -69,11 +69,11 @@
     <Compile Include="Enums\ECellColor.cs" />
     <Compile Include="Enums\ECellType.cs" />
     <Compile Include="Enums\EPieceColor.cs" />
-	<Compile Include="Events\CellStatusChangedEventArgs.cs" />
+    <Compile Include="Events\CellStatusChangedEventArgs.cs" />
     <Compile Include="Model\CellId.cs" />
     <Compile Include="Model\CellModel.cs" />
-	<Compile Include="Model\IGameBoard.cs" />
-	<Compile Include="Model\IGameLogic.cs" />
+    <Compile Include="Model\IGameBoard.cs" />
+    <Compile Include="Model\IGameLogic.cs" />
     <Page Include="Views\GridCell.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -84,8 +84,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\CellID.cs" />
-    <Compile Include="Models\MdgACellModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
