@@ -8,9 +8,8 @@ namespace ManDontGetAngryGame.Enums
 {
     public enum ECellType
     {
-        StartingGrid,
-        PlayingField,
-        SafeHouse,
-        None
+        PlayingCell,
+        EndCell,
+        HomeCell,
     }
 }

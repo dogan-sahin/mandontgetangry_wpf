@@ -1,29 +1,21 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using ManDontGetAngryGame.Enums;
 using ManDontGetAngryGame.Model;
 
 namespace ManDontGetAngryGame.ViewModels
 {
-    interface ICellStatusViewModel : INotifyPropertyChanged
+    public interface ICellStatusViewModel : INotifyPropertyChanged
     {
-        EPieceColor PieceColor { get; }
-
-        bool isEmpty { get; }
-
-        ECellType CellType { get; }
-
+        ECellColor CellColor { get; set; }
+        EPieceColor PieceColor { get; set; }
+        void SetPiece(EPieceColor piece);
         CellId Identifier { get; }
-
-        void SetPiece(EPieceColor pieceColor);
-
-        bool isCellCurrentlySelected { get; set; }
-
-        bool isValidTarget { get; set; }
-
-        event EventHandler<CellId> SelectedCell;
-
-        RelayCommand CellSelectedCommand { get; }
+        bool IsEmpty { get; }
 
     }
 }

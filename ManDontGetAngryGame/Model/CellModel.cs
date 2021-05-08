@@ -11,18 +11,22 @@ namespace ManDontGetAngryGame.Model
     {
         public int RowIndex { get; } 
         public int ColIndex { get; }
-       public ECellType CellType { get; set; }
+
+        public int Position { get; }
+        public ECellType CellType { get; set; }
 
        public EPieceColor PieceColor { get; private set; }
 
        public ECellColor CellColor { get; set; }
 
-        public CellModel(int row, int col)
+
+        public CellModel(int row, int col, int pos, ECellColor cellColor, ECellType cellType)
         {
             RowIndex = row;
             ColIndex = col;
-            CellType = ECellType.None;
-            CellColor = ECellColor.White;
+            Position = pos;
+            CellType = cellType;
+            CellColor = cellColor;
             PieceColor = EPieceColor.None;
         }
 
@@ -33,7 +37,7 @@ namespace ManDontGetAngryGame.Model
 
         public CellId Identifier
         {
-            get { return CellId.Create(RowIndex, ColIndex); }
+            get { return CellId.Create(Position, CellColor, CellType); }
         }
     }
 }

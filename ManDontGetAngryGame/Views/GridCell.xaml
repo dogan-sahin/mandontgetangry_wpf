@@ -3,15 +3,22 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ManDontGetAngryGame"
-        mc:Ignorable="d"
+        xmlns:local="clr-namespace:ManDontGetAngryGame" xmlns:local1="clr-namespace:ManDontGetAngryGame.Converter"
+             mc:Ignorable="d"
         d:DesignHeight="800" d:DesignWidth="800">
 
-    <Grid>
-        
-        
-        
-        
+    <UserControl.Resources>
+        <local1:CellColorToColorConverter x:Key="CellColorToColorConverter"/>
+        <local1:PieceColorToImageConverter x:Key="PieceColorToImageConverter"/>
+    </UserControl.Resources>
+
+    <Grid >
+        <Ellipse Stroke="Gray" Fill="{Binding CellColor ,Converter={StaticResource CellColorToColorConverter}}" />
+        <Image>
+            <Image.Source>
+                <Binding Path="PieceColor" Converter="{StaticResource PieceColorToImageConverter}"/>
+            </Image.Source>
+        </Image>
     </Grid>
     
     

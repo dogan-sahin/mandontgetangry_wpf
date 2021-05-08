@@ -9,10 +9,7 @@ namespace ManDontGetAngryGame.Enums
     public enum ECellColor
     {
         White,
-        Red,
         Green,
-        Blue,
-        Yellow,
-        None
+        Blue
     }
 }

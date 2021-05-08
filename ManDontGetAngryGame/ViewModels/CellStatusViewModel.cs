@@ -1,53 +1,129 @@
-﻿using System;
-using System.ComponentModel;
-using ManDontGetAngryGame.Enums;
+﻿using ManDontGetAngryGame.Enums;
 using ManDontGetAngryGame.Model;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace ManDontGetAngryGame.ViewModels
 {
-    public class CellStatusViewModel : ICellStatusViewModel
-    {
-        private readonly ECellType _cellType;
+    public class CellStatusViewModel : ICellStatusViewModel {
+
+        public event PropertyChangedEventHandler PropertyChanged = delegate { };
+
         private int _rowIndex;
         private int _colIndex;
 
-        public CellStatusViewModel(ECellType cellType, int rowIndex, int colIndex)
+        public CellStatusViewModel(int row, int col, int currentPos, ECellColor cellColor, ECellType cellType)
         {
+            _colIndex = col;
+            _rowIndex = row;
+            _currentPos = currentPos;
+            _cellColor = cellColor;
             _cellType = cellType;
-            _rowIndex = rowIndex;
-            _colIndex = colIndex;
         }
 
-        public event PropertyChangedEventHandler PropertyChanged = delegate{};
-
-        public virtual void OnPropertyChanged(string propertyName = null)
+        protected void OnPropertyChanged([CallerMemberName] string name = null)
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
 
-        
-
-
-        public EPieceColor PieceColor { get; }
-        public bool isEmpty { get; }
-        public ECellType CellType { get; }
-
-        public CellId Identifier
+        public int RowIndex
         {
-            get
+            get { return _rowIndex; }
+            set
             {
-                return (CellId.Create(_rowIndex, _colIndex));
+                if (_rowIndex != value)
+                {
+                    _rowIndex = value;
+                    OnPropertyChanged(nameof(RowIndex));
+                }
             }
         }
 
-        public void SetPiece(EPieceColor pieceColor)
+        private int _currentPos = 0;
+        public int CurrentPosition
         {
-            throw new NotImplementedException();
+            get { return _currentPos; }
+            set
+            {
+                if (_currentPos != value)
+                {
+                    _currentPos = value;
+                    OnPropertyChanged(nameof(CurrentPosition));
+                }
+            }
         }
 
-        public bool isCellCurrentlySelected { get; set; }
-        public bool isValidTarget { get; set; }
-        public event EventHandler<CellId> SelectedCell = delegate{};
-        public RelayCommand CellSelectedCommand { get; }
+        public int ColIndex
+        {
+            get { return _colIndex; }
+            set
+            {
+                if (_colIndex != value)
+                {
+                    _colIndex = value;
+                    OnPropertyChanged(nameof(ColIndex));
+                }
+            }
+        }
+
+        private ECellColor _cellColor = ECellColor.White;
+        public ECellColor CellColor
+        {
+            get { return _cellColor; }
+            set
+            {
+                if (_cellColor != value)
+                {
+                    _cellColor = value;
+                    OnPropertyChanged(nameof(CellColor));
+                }
+            }
+        }
+
+        private EPieceColor _pieceColor = EPieceColor.None;
+        public EPieceColor PieceColor
+        {
+            get { return _pieceColor; }
+            set
+            {
+                if (_pieceColor != value)
+                {
+                    _pieceColor = value;
+                    OnPropertyChanged(nameof(PieceColor));
+                }
+            }
+        }
+
+        private ECellType _cellType = ECellType.PlayingCell;
+        public ECellType CellType
+        {
+            get { return _cellType; }
+            set
+            {
+                if (_cellType != value)
+                {
+                    _cellType = value;
+                    OnPropertyChanged(nameof(CellType));
+                }
+            }
+        }
+
+        public void SetPiece(EPieceColor piece)
+        {
+            PieceColor = piece;
+        }
+
+        public CellId Identifier
+        {
+            get { return CellId.Create(_currentPos, _cellColor, _cellType); }
+        }
+
+        public bool IsEmpty
+        {
+            get { return _pieceColor == EPieceColor.None; }
+        }
+
+
+
     }
 }

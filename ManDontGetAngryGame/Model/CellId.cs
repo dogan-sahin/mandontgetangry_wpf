@@ -3,31 +3,41 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ManDontGetAngryGame.Enums;
 
 namespace ManDontGetAngryGame.Model
 {
     public class CellId
     {
-        private int _row;
-        public int Row
+        private int _position;
+        public int Position
         {
-            get { return _row; }
+            get { return _position; }
         }
 
-        private int _col;
-        public int Col
+        private ECellColor _color;
+        public ECellColor Color
         {
-            get { return _col; }
+            get { return _color; }
         }
 
-        private CellId(int row, int col)
+
+        private ECellType _type;
+        public ECellType Type
         {
-            _row = row;
-            _col = col;
+            get { return _type; }
         }
-        public static CellId Create(int row, int col)
+
+
+        private CellId(int position, ECellColor color, ECellType type)
         {
-            return new CellId(row, col);
+            _position = position;
+            _color = color;
+            _type = type;
+        }
+        public static CellId Create(int position, ECellColor color, ECellType type)
+        {
+            return new CellId(position, color, type);
         }
 
         public override bool Equals(object other)
@@ -37,12 +47,12 @@ namespace ManDontGetAngryGame.Model
             {
                 return false;
             }
-            return otherCasted.Row == this.Row && otherCasted.Col == this.Col;
+            return otherCasted.Position == this.Position && otherCasted.Color == this.Color && otherCasted.Type == this.Type;
         }
 
         public override int GetHashCode()
         {
-            return ("" + Row + Col).GetHashCode(); // Create a string and re-use the HashCode
+            return ("" + Position + Color + Type).GetHashCode(); // Create a string and re-use the HashCode
         }
     }
 }

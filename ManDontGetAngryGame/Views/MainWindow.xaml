@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ManDontGetAngryGame"
         mc:Ignorable="d"
-        Title="Awesome Man Don't Get Angry Game" Height="450" Width="800">
+        Title="Awesome Man Don't Get Angry Game" Height="450" Width="700">
 
     <Window.Resources>
         <LinearGradientBrush x:Key="MenuBackground" StartPoint="0,0" EndPoint="1,9">
@@ -53,474 +53,56 @@
                     </Grid.ColumnDefinitions>
 
                     <Border BorderBrush="Black" BorderThickness="5" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="20">
-                        <Grid Height="800" Width="800">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="*"/>
-                            </Grid.RowDefinitions>
 
-                            <Grid Grid.Row="0">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
+                            <ItemsControl ItemsSource="{Binding Cells}">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <Grid Height="800" Width="800">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="*"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                        </Grid>
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                                <ItemsControl.ItemContainerStyle>
+                                    <Style>
+                                        <Setter Property="Grid.Row" Value="{Binding RowIndex}" />
+                                        <Setter Property="Grid.Column" Value="{Binding ColIndex}" />
+                                    </Style>
+                                </ItemsControl.ItemContainerStyle>
+                            <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <local:GridCell>
+                                            <Ellipse Fill="CornflowerBlue" />
+                                        </local:GridCell>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
 
-                                <local:GridCell Grid.Column="0" DataContext="{Binding Cells[0][0]}">
-                                    <Ellipse Fill="CornflowerBlue" />
-                                </local:GridCell>
-                                <local:GridCell Grid.Column="1" DataContext="{Binding Cells[0][1]}">
-                                    <Ellipse Fill="CornflowerBlue" />
-                                </local:GridCell>
-                                <local:GridCell Grid.Column="2" DataContext="{Binding Cells[0][2]}"/>
-                                <local:GridCell Grid.Column="3" DataContext="{Binding Cells[0][3]}"/>
-                                <local:GridCell Grid.Column="4" DataContext="{Binding Cells[0][4]}">
-                                    <Ellipse Fill="White" Stroke="Gray" StrokeThickness="1px"/>
-                                </local:GridCell>
-                                <local:GridCell Grid.Column="5" DataContext="{Binding Cells[0][5]}">
-                                    <Ellipse Fill="White" Stroke="Gray" StrokeThickness="1px"/>
-                                </local:GridCell>
-                                <local:GridCell Grid.Column="6" DataContext="{Binding Cells[0][6]}">
-                                    <Ellipse Fill="Red" Stroke="Gray" StrokeThickness="1px"/>
-                                </local:GridCell>
-                                <local:GridCell Grid.Column="7" DataContext="{Binding Cells[0][7]}"/>
-                                <local:GridCell Grid.Column="8" DataContext="{Binding Cells[0][8]}"/>
-                                <local:GridCell Grid.Column="9" DataContext="{Binding Cells[0][9]}">
-                                    <Ellipse Fill="Red" />
-                                </local:GridCell>
-                                <local:GridCell Grid.Column="10" DataContext="{Binding Cells[0][10]}">
-                                    <Ellipse Fill="Red" />
-                                </local:GridCell>
-                            </Grid>
-
-                            <Grid Grid.Row="1">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-
-                                <local:GridCell Grid.Column="0" DataContext="{Binding Cells[1][0]}">
-                                    <Ellipse Fill="CornflowerBlue" />
-                                </local:GridCell>
-                                <local:GridCell Grid.Column="1" DataContext="{Binding Cells[1][1]}">
-                                    <Ellipse Fill="CornflowerBlue" />
-                                </local:GridCell>
-                                <local:GridCell Grid.Column="2" DataContext="{Binding Cells[1][2]}"/>
-                                <local:GridCell Grid.Column="3" DataContext="{Binding Cells[1][3]}"/>
-                                <local:GridCell Grid.Column="4" DataContext="{Binding Cells[1][4]}">
-                                    <Ellipse Fill="White" Stroke="Gray" StrokeThickness="1px"/>
-                                </local:GridCell>
-                                <local:GridCell Grid.Column="5" DataContext="{Binding Cells[1][5]}">
-                                    <Ellipse Fill="Red" Stroke="Gray" StrokeThickness="1px"/>
-                                </local:GridCell>
-                                <local:GridCell Grid.Column="6" DataContext="{Binding Cells[1][6]}">
-                                    <Ellipse Fill="White" Stroke="Gray" StrokeThickness="1px"/>
-                                </local:GridCell>
-                                <local:GridCell Grid.Column="7" DataContext="{Binding Cells[1][7]}"/>
-                                <local:GridCell Grid.Column="8" DataContext="{Binding Cells[1][8]}"/>
-                                <local:GridCell Grid.Column="9" DataContext="{Binding Cells[1][9]}">
-                                    <Ellipse Fill="Red" />
-                                </local:GridCell>
-                                <local:GridCell Grid.Column="10" DataContext="{Binding Cells[1][10]}">
-                                    <Ellipse Fill="Red" />
-                                </local:GridCell>
-                            </Grid>
-
-                            <Grid Grid.Row="2">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-
-                                <local:GridCell Grid.Column="0" DataContext="{Binding Cells[2][0]}"/>
-                                <local:GridCell Grid.Column="1" DataContext="{Binding Cells[2][1]}"/>
-                                <local:GridCell Grid.Column="2" DataContext="{Binding Cells[2][2]}"/>
-                                <local:GridCell Grid.Column="3" DataContext="{Binding Cells[2][3]}"/>
-                                <local:GridCell Grid.Column="4" DataContext="{Binding Cells[2][4]}">
-                                    <Ellipse Fill="White" Stroke="Gray" StrokeThickness="1px"/>
-                                </local:GridCell>
-                                <local:GridCell Grid.Column="5" DataContext="{Binding Cells[2][5]}">
-                                    <Ellipse Fill="Red" Stroke="Gray" StrokeThickness="1px"/>
-                                </local:GridCell>
-                                <local:GridCell Grid.Column="6" DataContext="{Binding Cells[2][6]}">
-                                    <Ellipse Fill="White" Stroke="Gray" StrokeThickness="1px"/>
-                                </local:GridCell>
-                                <local:GridCell Grid.Column="7" DataContext="{Binding Cells[2][7]}"/>
-                                <local:GridCell Grid.Column="8" DataContext="{Binding Cells[2][8]}"/>
-                                <local:GridCell Grid.Column="9" DataContext="{Binding Cells[2][9]}"/>
-                                <local:GridCell Grid.Column="10" DataContext="{Binding Cells[2][10]}"/>
-                            </Grid>
-
-                            <Grid Grid.Row="3">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-
-                                <local:GridCell Grid.Column="0" DataContext="{Binding Cells[3][0]}"/>
-                                <local:GridCell Grid.Column="1" DataContext="{Binding Cells[3][1]}"/>
-                                <local:GridCell Grid.Column="2" DataContext="{Binding Cells[3][2]}"/>
-                                <local:GridCell Grid.Column="3" DataContext="{Binding Cells[3][3]}"/>
-                                <local:GridCell Grid.Column="4" DataContext="{Binding Cells[3][4]}">
-                                    <Ellipse Fill="White" Stroke="Gray" StrokeThickness="1px"/>
-                                </local:GridCell>
-                                <local:GridCell Grid.Column="5" DataContext="{Binding Cells[3][5]}">
-                                    <Ellipse Fill="Red" Stroke="Gray" StrokeThickness="1px"/>
-                                </local:GridCell>
-                                <local:GridCell Grid.Column="6" DataContext="{Binding Cells[3][6]}">
-                                    <Ellipse Fill="White" Stroke="Gray" StrokeThickness="1px"/>
-                                </local:GridCell>
-                                <local:GridCell Grid.Column="7" DataContext="{Binding Cells[3][7]}"/>
-                                <local:GridCell Grid.Column="8" DataContext="{Binding Cells[3][8]}"/>
-                                <local:GridCell Grid.Column="9" DataContext="{Binding Cells[3][9]}"/>
-                                <local:GridCell Grid.Column="10" DataContext="{Binding Cells[3][10]}"/>
-                            </Grid>
-
-                            <Grid Grid.Row="4">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-
-                                <local:GridCell Grid.Column="0" DataContext="{Binding Cells[4][0]}">
-                                    <Ellipse Fill="CornflowerBlue" Stroke="Gray" StrokeThickness="1px"/>
-                                </local:GridCell>
-                                <local:GridCell Grid.Column="1" DataContext="{Binding Cells[4][1]}">
-                                    <Ellipse Fill="White" Stroke="Gray" StrokeThickness="1px"/>
-                                </local:GridCell>
-                                <local:GridCell Grid.Column="2" DataContext="{Binding Cells[4][2]}">
-                                    <Ellipse Fill="White" Stroke="Gray" StrokeThickness="1px"/>
-                                </local:GridCell>
-                                <local:GridCell Grid.Column="3" DataContext="{Binding Cells[4][3]}">
-                                    <Ellipse Fill="White" Stroke="Gray" StrokeThickness="1px"/>
-                                </local:GridCell>
-                                <local:GridCell Grid.Column="4" DataContext="{Binding Cells[4][4]}">
-                                    <Ellipse Fill="White" Stroke="Gray" StrokeThickness="1px"/>
-                                </local:GridCell>
-                                <local:GridCell Grid.Column="5" DataContext="{Binding Cells[4][5]}">
-                                    <Ellipse Fill="Red" Stroke="Gray" StrokeThickness="1px"/>
-                                </local:GridCell>
-                                <local:GridCell Grid.Column="6" DataContext="{Binding Cells[4][6]}">
-                                    <Ellipse Fill="White" Stroke="Gray" StrokeThickness="1px"/>
-                                </local:GridCell>
-                                <local:GridCell Grid.Column="7" DataContext="{Binding Cells[4][7]}">
-                                    <Ellipse Fill="White" Stroke="Gray" StrokeThickness="1px"/>
-                                </local:GridCell>
-                                <local:GridCell Grid.Column="8" DataContext="{Binding Cells[4][8]}">
-                                    <Ellipse Fill="White" Stroke="Gray" StrokeThickness="1px"/>
-                                </local:GridCell>
-                                <local:GridCell Grid.Column="9" DataContext="{Binding Cells[4][9]}">
-                                    <Ellipse Fill="White" Stroke="Gray" StrokeThickness="1px"/>
-                                </local:GridCell>
-                                <local:GridCell Grid.Column="10" DataContext="{Binding Cells[4][10]}">
-                                    <Ellipse Fill="White" Stroke="Gray" StrokeThickness="1px"/>
-                                </local:GridCell>
-                            </Grid>
-
-                            <Grid Grid.Row="5">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-
-                                <local:GridCell Grid.Column="0" DataContext="{Binding Cells[5][0]}">
-                                    <Ellipse Fill="White" Stroke="Gray" StrokeThickness="1px"/>
-                                </local:GridCell>
-                                <local:GridCell Grid.Column="1" DataContext="{Binding Cells[5][1]}">
-                                    <Ellipse Fill="CornflowerBlue" Stroke="Gray" StrokeThickness="1px"/>
-                                </local:GridCell>
-                                <local:GridCell Grid.Column="2" DataContext="{Binding Cells[5][2]}">
-                                    <Ellipse Fill="CornflowerBlue" Stroke="Gray" StrokeThickness="1px"/>
-                                </local:GridCell>
-                                <local:GridCell Grid.Column="3" DataContext="{Binding Cells[5][3]}">
-                                    <Ellipse Fill="CornflowerBlue" Stroke="Gray" StrokeThickness="1px"/>
-                                </local:GridCell>
-                                <local:GridCell Grid.Column="4" DataContext="{Binding Cells[5][4]}">
-                                    <Ellipse Fill="CornflowerBlue" Stroke="Gray" StrokeThickness="1px"/>
-                                </local:GridCell>
-                                <local:GridCell Grid.Column="5" DataContext="{Binding Cells[5][5]}"/>
-                                <local:GridCell Grid.Column="6" DataContext="{Binding Cells[5][6]}">
-                                    <Ellipse Fill="MediumVioletRed" Stroke="Gray" StrokeThickness="1px"/>
-                                </local:GridCell>
-                                <local:GridCell Grid.Column="7" DataContext="{Binding Cells[5][7]}">
-                                    <Ellipse Fill="MediumVioletRed" Stroke="Gray" StrokeThickness="1px"/>
-                                </local:GridCell>
-                                <local:GridCell Grid.Column="8" DataContext="{Binding Cells[5][8]}">
-                                    <Ellipse Fill="MediumVioletRed" Stroke="Gray" StrokeThickness="1px"/>
-                                </local:GridCell>
-                                <local:GridCell Grid.Column="9" DataContext="{Binding Cells[5][9]}">
-                                    <Ellipse Fill="MediumVioletRed" Stroke="Gray" StrokeThickness="1px"/>
-                                </local:GridCell>
-                                <local:GridCell Grid.Column="10" DataContext="{Binding Cells[5][10]}">
-                                    <Ellipse Fill="White" Stroke="Gray" StrokeThickness="1px"/>
-                                </local:GridCell>
-                            </Grid>
-
-                            <Grid Grid.Row="6">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-
-                                <local:GridCell Grid.Column="0" DataContext="{Binding Cells[6][0]}">
-                                    <Ellipse Fill="White" Stroke="Gray" StrokeThickness="1px"/>
-                                </local:GridCell>
-                                <local:GridCell Grid.Column="1" DataContext="{Binding Cells[6][1]}">
-                                    <Ellipse Fill="White" Stroke="Gray" StrokeThickness="1px"/>
-                                </local:GridCell>
-                                <local:GridCell Grid.Column="2" DataContext="{Binding Cells[6][2]}">
-                                    <Ellipse Fill="White" Stroke="Gray" StrokeThickness="1px"/>
-                                </local:GridCell>
-                                <local:GridCell Grid.Column="3" DataContext="{Binding Cells[6][3]}">
-                                    <Ellipse Fill="White" Stroke="Gray" StrokeThickness="1px"/>
-                                </local:GridCell>
-                                <local:GridCell Grid.Column="4" DataContext="{Binding Cells[6][4]}">
-                                    <Ellipse Fill="White" Stroke="Gray" StrokeThickness="1px"/>
-                                </local:GridCell>
-                                <local:GridCell Grid.Column="5" DataContext="{Binding Cells[6][5]}">
-                                    <Ellipse Fill="Orange" Stroke="Gray" StrokeThickness="1px"/>
-                                </local:GridCell>
-                                <local:GridCell Grid.Column="6" DataContext="{Binding Cells[6][6]}">
-                                    <Ellipse Fill="White" Stroke="Gray" StrokeThickness="1px"/>
-                                </local:GridCell>
-                                <local:GridCell Grid.Column="7" DataContext="{Binding Cells[6][7]}">
-                                    <Ellipse Fill="White" Stroke="Gray" StrokeThickness="1px"/>
-                                </local:GridCell>
-                                <local:GridCell Grid.Column="8" DataContext="{Binding Cells[6][8]}">
-                                    <Ellipse Fill="White" Stroke="Gray" StrokeThickness="1px"/>
-                                </local:GridCell>
-                                <local:GridCell Grid.Column="9" DataContext="{Binding Cells[6][9]}">
-                                    <Ellipse Fill="White" Stroke="Gray" StrokeThickness="1px"/>
-                                </local:GridCell>
-                                <local:GridCell Grid.Column="10" DataContext="{Binding Cells[6][10]}">
-                                    <Ellipse Fill="MediumVioletRed" Stroke="Gray" StrokeThickness="1px"/>
-                                </local:GridCell>
-                            </Grid>
-
-                            <Grid Grid.Row="7">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-
-                                <local:GridCell Grid.Column="0" DataContext="{Binding Cells[7][0]}"/>
-                                <local:GridCell Grid.Column="1" DataContext="{Binding Cells[7][1]}"/>
-                                <local:GridCell Grid.Column="2" DataContext="{Binding Cells[7][2]}"/>
-                                <local:GridCell Grid.Column="3" DataContext="{Binding Cells[7][3]}"/>
-                                <local:GridCell Grid.Column="4" DataContext="{Binding Cells[7][4]}">
-                                    <Ellipse Fill="White" Stroke="Gray" StrokeThickness="1px"/>
-                                </local:GridCell>
-                                <local:GridCell Grid.Column="5" DataContext="{Binding Cells[7][5]}">
-                                    <Ellipse Fill="Orange" Stroke="Gray" StrokeThickness="1px"/>
-                                </local:GridCell>
-                                <local:GridCell Grid.Column="6" DataContext="{Binding Cells[7][6]}">
-                                    <Ellipse Fill="White" Stroke="Gray" StrokeThickness="1px"/>
-                                </local:GridCell>
-                                <local:GridCell Grid.Column="7" DataContext="{Binding Cells[7][7]}"/>
-                                <local:GridCell Grid.Column="8" DataContext="{Binding Cells[7][8]}"/>
-                                <local:GridCell Grid.Column="9" DataContext="{Binding Cells[7][9]}"/>
-                                <local:GridCell Grid.Column="10" DataContext="{Binding Cells[7][10]}"/>
-                            </Grid>
-
-                            <Grid Grid.Row="8">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-
-                                <local:GridCell Grid.Column="0" DataContext="{Binding Cells[8][0]}"/>
-                                <local:GridCell Grid.Column="1" DataContext="{Binding Cells[8][1]}"/>
-                                <local:GridCell Grid.Column="2" DataContext="{Binding Cells[8][2]}"/>
-                                <local:GridCell Grid.Column="3" DataContext="{Binding Cells[8][3]}"/>
-                                <local:GridCell Grid.Column="4" DataContext="{Binding Cells[8][4]}">
-                                    <Ellipse Fill="White" Stroke="Gray" StrokeThickness="1px"/>
-                                </local:GridCell>
-                                <local:GridCell Grid.Column="5" DataContext="{Binding Cells[8][5]}">
-                                    <Ellipse Fill="Orange" Stroke="Gray" StrokeThickness="1px"/>
-                                </local:GridCell>
-                                <local:GridCell Grid.Column="6" DataContext="{Binding Cells[8][6]}">
-                                    <Ellipse Fill="White" Stroke="Gray" StrokeThickness="1px"/>
-                                </local:GridCell>
-                                <local:GridCell Grid.Column="7" DataContext="{Binding Cells[8][7]}"/>
-                                <local:GridCell Grid.Column="8" DataContext="{Binding Cells[8][8]}"/>
-                                <local:GridCell Grid.Column="9" DataContext="{Binding Cells[8][9]}"/>
-                                <local:GridCell Grid.Column="10" DataContext="{Binding Cells[8][10]}"/>
-                            </Grid>
-
-                            <Grid Grid.Row="9">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-
-                                <local:GridCell Grid.Column="0" DataContext="{Binding Cells[9][0]}">
-                                    <Ellipse Fill="Orange" />
-                                </local:GridCell>
-                                <local:GridCell Grid.Column="1" DataContext="{Binding Cells[9][1]}">
-                                    <Ellipse Fill="Orange" />
-                                </local:GridCell>
-                                <local:GridCell Grid.Column="2" DataContext="{Binding Cells[9][2]}"/>
-                                <local:GridCell Grid.Column="3" DataContext="{Binding Cells[9][3]}"/>
-                                <local:GridCell Grid.Column="4" DataContext="{Binding Cells[9][4]}">
-                                    <Ellipse Fill="White" Stroke="Gray" StrokeThickness="1px"/>
-                                </local:GridCell>
-                                <local:GridCell Grid.Column="5" DataContext="{Binding Cells[9][5]}">
-                                    <Ellipse Fill="Orange" Stroke="Gray" StrokeThickness="1px"/>
-                                </local:GridCell>
-                                <local:GridCell Grid.Column="6" DataContext="{Binding Cells[9][6]}">
-                                    <Ellipse Fill="White" Stroke="Gray" StrokeThickness="1px"/>
-                                </local:GridCell>
-                                <local:GridCell Grid.Column="7" DataContext="{Binding Cells[9][7]}"/>
-                                <local:GridCell Grid.Column="8" DataContext="{Binding Cells[9][8]}"/>
-                                <local:GridCell Grid.Column="9" DataContext="{Binding Cells[9][9]}">
-                                    <Ellipse Fill="MediumVioletRed" />
-                                </local:GridCell>
-                                <local:GridCell Grid.Column="10" DataContext="{Binding Cells[9][10]}">
-                                    <Ellipse Fill="MediumVioletRed" />
-                                </local:GridCell>
-                            </Grid>
-
-                            <Grid Grid.Row="10">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-
-                                <local:GridCell Grid.Column="0" DataContext="{Binding Cells[10][0]}">
-                                    <Ellipse Fill="Orange" />
-                                </local:GridCell>
-                                <local:GridCell Grid.Column="1" DataContext="{Binding Cells[10][1]}">
-                                    <Ellipse Fill="Orange" />
-                                </local:GridCell>
-                                <local:GridCell Grid.Column="2" DataContext="{Binding Cells[10][2]}"/>
-                                <local:GridCell Grid.Column="3" DataContext="{Binding Cells[10][3]}"/>
-                                <local:GridCell Grid.Column="4" DataContext="{Binding Cells[10][4]}">
-                                    <Ellipse Fill="Orange" Stroke="Gray" StrokeThickness="1px"/>
-                                </local:GridCell>
-                                <local:GridCell Grid.Column="5" DataContext="{Binding Cells[10][5]}">
-                                    <Ellipse Fill="White" Stroke="Gray" StrokeThickness="1px"/>
-                                </local:GridCell>
-                                <local:GridCell Grid.Column="6" DataContext="{Binding Cells[10][6]}">
-                                    <Ellipse Fill="White" Stroke="Gray" StrokeThickness="1px"/>
-                                </local:GridCell>
-                                <local:GridCell Grid.Column="7" DataContext="{Binding Cells[10][7]}"/>
-                                <local:GridCell Grid.Column="8" DataContext="{Binding Cells[10][8]}"/>
-                                <local:GridCell Grid.Column="9" DataContext="{Binding Cells[10][9]}">
-                                    <Ellipse Fill="MediumVioletRed" />
-                                </local:GridCell>
-                                <local:GridCell Grid.Column="10" DataContext="{Binding Cells[10][10]}">
-                                    <Ellipse Fill="MediumVioletRed" />
-                                </local:GridCell>
-                            </Grid>
-
-                        </Grid>
+                          
                     </Border>
 
 
@@ -531,12 +113,15 @@
                         </Grid.RowDefinitions>
 
                         <Grid Grid.Row="0">
-                            <Label>Würfel ...</Label>
+                            <StackPanel Orientation="Horizontal">
+                                <Label FontSize="35">Dice:</Label>
+                                <Label FontSize="35" Content="{Binding Dice}"/>
+                            </StackPanel>
                         </Grid>
 
                         <Grid Grid.Row="1">
                             <StackPanel DockPanel.Dock="Bottom" VerticalAlignment="Bottom">
-                                <Button Margin="10" Height="30" Command="{Binding SurrenderGameCommand}">
+                                <Button Margin="10" Height="30"  Command="{Binding ThrowDiceCommand}">
                                     <StackPanel Orientation="Horizontal">
                                         <Label Content="Roll the dice"></Label>
                                     </StackPanel>

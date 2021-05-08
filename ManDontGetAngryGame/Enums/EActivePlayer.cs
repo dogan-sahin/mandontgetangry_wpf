@@ -9,8 +9,6 @@ namespace ManDontGetAngryGame.Enums
     public enum EActivePlayer
     {
         Green,
-        Blue,
-        Red,
-        Yellow
+        Blue
     }
 }

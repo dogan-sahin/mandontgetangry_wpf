@@ -55,14 +55,20 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converter\CellColorToColorConverter.cs" />
+    <Compile Include="Converter\PieceColorToImageConverter.cs" />
     <Compile Include="Enums\EActivePlayer.cs" />
-    <Compile Include="ViewModels\CellStatusViewModel.cs" />
-    <Compile Include="ViewModels\ICellStatusViewModel.cs" />
-    <Compile Include="ViewModels\RelayCommand.cs" />
     <Compile Include="Events\GameFinishedEventArgs.cs" />
     <Compile Include="Events\PieceFinishedEventArgs.cs" />
     <Compile Include="Events\PieceThrownOutEventArgs.cs" />
-    <Compile Include="Game\Board.cs" />
+    <Compile Include="Game\GameBoard.cs" />
+    <Compile Include="Game\GameLogic.cs" />
+    <Compile Include="Game\GameRules.cs" />
+    <Compile Include="Model\CellPositions.cs" />
+    <Compile Include="ViewModels\CellStatusViewModel.cs" />
+    <Compile Include="ViewModels\ICellStatusViewModel.cs" />
+    <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\RelayCommand.cs" />
     <Compile Include="Views\GridCell.xaml.cs">
       <DependentUpon>GridCell.xaml</DependentUpon>
     </Compile>
@@ -79,8 +85,6 @@
     <Compile Include="Events\CellStatusChangedEventArgs.cs" />
     <Compile Include="Model\CellId.cs" />
     <Compile Include="Model\CellModel.cs" />
-    <Compile Include="Model\IGameBoard.cs" />
-    <Compile Include="Model\IGameLogic.cs" />
     <Page Include="Views\GridCell.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -118,13 +122,23 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ViewModels\" />
+    <Content Include="Figures\empty.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Figures\BlueFigure.PNG" />
-    <Resource Include="Figures\GreenFigure.PNG" />
-    <Resource Include="Figures\RedFigure.PNG" />
-    <Resource Include="Figures\YellowFigure.PNG" />
+    <Content Include="Figures\BlueFigure.PNG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Figures\GreenFigure.PNG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Figures\RedFigure.PNG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Figures\YellowFigure.PNG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
