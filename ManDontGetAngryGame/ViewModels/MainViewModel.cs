@@ -99,6 +99,8 @@ namespace ManDontGetAngryGame.ViewModels
                            (x) =>
                            {
                                Dice = random.Next(6) + 1;
+                               _gameLogic.MovePiece(Dice, ActivePlayer);
+                               ActivePlayer = _gameLogic.ActivePlayer;
                            }, // Execute
                            (x) => { return true; } // CanExecute
                        ));

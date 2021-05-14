@@ -32,6 +32,7 @@ namespace ManDontGetAngryGame.Game
         {
 
         }
+
         
         public event EventHandler<CellStatusChangedEventArgs> CellStatusChanged;
        
@@ -50,12 +51,16 @@ namespace ManDontGetAngryGame.Game
             SetPiece(1, ECellColor.Blue, ECellType.HomeCell, EPieceColor.Blue);
             SetPiece(2, ECellColor.Blue, ECellType.HomeCell, EPieceColor.Blue);
             SetPiece(3, ECellColor.Blue, ECellType.HomeCell, EPieceColor.Blue);
-            SetPiece(1, ECellColor.Blue, ECellType.PlayingCell, EPieceColor.Blue);
+            SetPiece(4, ECellColor.Blue, ECellType.HomeCell, EPieceColor.Blue);
 
             SetPiece(1, ECellColor.Green, ECellType.HomeCell, EPieceColor.Green);
             SetPiece(2, ECellColor.Green, ECellType.HomeCell, EPieceColor.Green);
             SetPiece(3, ECellColor.Green, ECellType.HomeCell, EPieceColor.Green);
-            SetPiece(13, ECellColor.Green, ECellType.PlayingCell, EPieceColor.Green);
+            SetPiece(4, ECellColor.Green, ECellType.HomeCell, EPieceColor.Green);
+
+            SetStartPiece(EPieceColor.Blue);
+            SetStartPiece(EPieceColor.Green);
+
         }
 
         public CellModel GetCell(CellId cellId)
@@ -63,8 +68,31 @@ namespace ManDontGetAngryGame.Game
             return _cells[cellId];
         }
 
+        public void SetStartPiece(EPieceColor pieceColor)
+        {
+            if (pieceColor == EPieceColor.Blue)
+            {
+                MovePiece(GetPieceFromHome(ECellColor.Blue), GetStartCell(EPieceColor.Blue));
+            } else if (pieceColor == EPieceColor.Green)
+            {
+                MovePiece(GetPieceFromHome(ECellColor.Green), GetStartCell(EPieceColor.Green));
+            }
+        }
+
         public CellModel GetPlayingCell(int pos)
         {
+            if (pos == 0)
+            {
+                pos = 1;
+            }
+            if (pos == GetStartCell(EPieceColor.Blue).Position)
+            {
+                return GetCell(GetStartCell(EPieceColor.Blue));
+            }
+            else if (pos == GetStartCell(EPieceColor.Green).Position)
+            {
+                return GetCell(GetStartCell(EPieceColor.Green));
+            }
             return _cells[keyFor(pos,ECellColor.White,ECellType.PlayingCell)];
         }
 
@@ -85,10 +113,42 @@ namespace ManDontGetAngryGame.Game
             return CellId.Create(pos, cellColor, cellType);
         }
 
-        public CellModel GetPieceFromHome(EPieceColor color)
+        public CellId GetPieceFromHome(ECellColor color)
         {
-            return _cells.First;
+            return _cells.First(cellId =>
+                cellId.Key.Color == color && cellId.Key.Type == ECellType.HomeCell).Key;
         }
+
+        public CellId GetStartCell(EPieceColor color)
+        {
+            if(color == EPieceColor.Blue)
+            {
+                return keyFor(1, ECellColor.Blue, ECellType.PlayingCell);
+            }
+            return keyFor(13, ECellColor.Green, ECellType.PlayingCell);
+        }
+
+        public CellId GetFreeHomeCell(EPieceColor sourcePieceColor)
+        {
+            if (sourcePieceColor == EPieceColor.Blue)
+            {
+                return _cells.First(cellId =>
+                    cellId.Key.Color == ECellColor.Blue && cellId.Key.Type == ECellType.HomeCell && cellId.Value.PieceColor == EPieceColor.None).Key;
+            }
+            return _cells.First(cellId =>
+                cellId.Key.Color == ECellColor.Green && cellId.Key.Type == ECellType.HomeCell && cellId.Value.PieceColor == EPieceColor.None).Key;
+        }
+
+
+        public CellId GetLastPlayingCell(EPieceColor color)
+        {
+            if (color == EPieceColor.Blue)
+            {
+                return keyFor(24, ECellColor.White, ECellType.PlayingCell);
+            }
+            return keyFor(12, ECellColor.White, ECellType.PlayingCell);
+        }
+    
 
         public void MovePiece(CellId source, CellId target)
         {
@@ -97,14 +157,6 @@ namespace ManDontGetAngryGame.Game
             SetPiece(source, EPieceColor.None);
         }
 
-        public void ThrowPiece(CellId source, CellId target)
-        {
-            var piece1 = _cells[source].PieceColor;
-            var piece2 = _cells[target].PieceColor;
-
-            SetPiece(target, piece1);
-            SetPiece(source, piece2);
-        }
 
     }
 }

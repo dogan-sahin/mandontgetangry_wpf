@@ -40,6 +40,19 @@ namespace ManDontGetAngryGame.Game
             return false;
         }
 
+        public bool IsMovedCellLastPlayingCell(CellId source, CellId target, GameBoard board)
+        {
+            var sourceCell = board.GetCell(source);
+            var targetCell = board.GetCell(target);
+
+            if (targetCell.Identifier.Equals(board.GetLastPlayingCell(sourceCell.PieceColor)))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
         public bool areAllEndCellsOccupied(ECellColor color, GameBoard board)
         {
             var endcells = board.Cells.Where(cell =>
