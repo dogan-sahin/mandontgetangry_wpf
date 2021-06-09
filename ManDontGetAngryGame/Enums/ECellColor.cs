@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace ManDontGetAngryGame.Enums
 {
-    public enum ECellType
+    public enum ECellColor
     {
-        PlayingCell,
-        EndCell,
-        HomeCell,
+        White,
+        Green,
+        Blue
     }
 }

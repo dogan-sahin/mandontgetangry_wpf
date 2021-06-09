@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ManDontGetAngryGame.Game;
+using ManDontGetAngryGame.ViewModels;
 
 namespace ManDontGetAngryGame
 {
@@ -22,6 +24,12 @@ namespace ManDontGetAngryGame
     {
         public MainWindow()
         {
+            GameBoard gameBoard = new GameBoard();
+            GameRules gameRules = new GameRules();
+            GameLogic gameLogic = new GameLogic(gameBoard, gameRules);
+            
+            MainViewModel mvm = new MainViewModel(gameLogic);
+            DataContext = mvm;
             InitializeComponent();
         }
     }

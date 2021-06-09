@@ -1,0 +1,158 @@
+﻿<Window x:Class="ManDontGetAngryGame.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ManDontGetAngryGame"
+        xmlns:views="clr-namespace:ManDontGetAngryGame.Views"
+        mc:Ignorable="d"
+        Title="Awesome Man Don't Get Angry Game" Height="450" Width="700">
+
+    <Window.Resources>
+        <LinearGradientBrush x:Key="MenuBackground" StartPoint="0,0" EndPoint="1,9">
+            <GradientStop Color="DarkGray" Offset="0.0"/>
+            <GradientStop Color="White" Offset="0.5"/>
+        </LinearGradientBrush>
+
+        <Style x:Key="MenuStyle" TargetType="Menu">
+            <Setter Property="Menu.Foreground" Value="White"/>
+            <Setter Property="Menu.Background" Value="{StaticResource MenuBackground}"/>
+            <Setter Property="Menu.Height" Value="25"/>
+        </Style>
+
+        <Style x:Key="MenuItem" TargetType="MenuItem">
+            <Setter Property="Menu.Foreground" Value="White"/>
+            <Setter Property="Menu.FontSize" Value="15"/>
+            <Setter Property="Menu.FontWeight" Value="DemiBold"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Menu Style="{StaticResource MenuStyle}">
+                <MenuItem Header="_File" Style="{StaticResource MenuItem}">
+                    <MenuItem Header="_Exit" Foreground="Black"/>
+                </MenuItem>
+
+                <MenuItem Header="_Help" Style="{StaticResource MenuItem}">
+                    <MenuItem Header="_About" Foreground="Black"/>
+                </MenuItem>
+            </Menu>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Viewbox>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="350"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Border BorderBrush="Black" BorderThickness="5" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="20">
+
+                            <ItemsControl ItemsSource="{Binding Cells}">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <Grid Height="800" Width="800">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="*"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                        </Grid>
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                                <ItemsControl.ItemContainerStyle>
+                                    <Style>
+                                        <Setter Property="Grid.Row" Value="{Binding RowIndex}" />
+                                        <Setter Property="Grid.Column" Value="{Binding ColIndex}" />
+                                    </Style>
+                                </ItemsControl.ItemContainerStyle>
+                            <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <local:GridCell>
+                                            <Ellipse Fill="CornflowerBlue" />
+                                        </local:GridCell>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+
+                          
+                    </Border>
+
+
+                    <Grid Grid.Column="1" Margin="20">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="100"/>
+                            <RowDefinition Height="100"/>
+                            <RowDefinition Height="100"/>
+                            <RowDefinition Height="100"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0">
+                            <StackPanel Orientation="Horizontal">
+                                <Label FontSize="35">Active Player:</Label>
+                                <Label FontSize="35" Content="{Binding ActivePlayer}"/>
+                            </StackPanel>
+                        </Grid>
+
+                        <Grid Grid.Row="1">
+                            <StackPanel Orientation="Horizontal">
+                                <Label FontSize="35">Last Throw:</Label>
+                                <Label FontSize="35" Content="{Binding Dice}"/>
+                            </StackPanel>
+                        </Grid>
+
+                        <Grid Grid.Row="2">
+                            <StackPanel DockPanel.Dock="Bottom" VerticalAlignment="Bottom">
+                                <Button Margin="10" Height="30"  Command="{Binding ThrowDiceCommand}">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Label Content="Roll the dice"></Label>
+                                    </StackPanel>
+                                </Button>
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </Viewbox>
+        </Grid>
+        <views:WinnerOverlay>
+            <views:WinnerOverlay.Style>
+                <Style>
+                    <Setter Property="views:WinnerOverlay.Visibility" Value="Collapsed"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsGameFinished}" Value="True">
+                            <Setter Property="views:WinnerOverlay.Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </views:WinnerOverlay.Style>
+        </views:WinnerOverlay>
+    </Grid>
+</Window>

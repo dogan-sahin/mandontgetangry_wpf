@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\simon\source\repos\mandontgetangry_wpf\ManDontGetAngryGame\obj\Debug\
+C:\Users\dogansahin\NET_exercises\ManDontGetAngryGame\ManDontGetAngryGame\obj\Debug\
 ManDontGetAngryGame
 none
 false
 DEBUG;TRACE
-C:\Users\simon\source\repos\mandontgetangry_wpf\ManDontGetAngryGame\App.xaml
-11151548125
-
-8-360327366
+C:\Users\dogansahin\NET_exercises\ManDontGetAngryGame\ManDontGetAngryGame\App.xaml
+3446648985
+31460207239
+26-2015496449
 13-1505183044
-MainWindow.xaml;
+Views\GridCell.xaml;Views\MainWindow.xaml;Views\WinnerOverlay.xaml;
 
-False
+True
 

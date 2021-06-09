@@ -1,0 +1,49 @@
+﻿<UserControl x:Class="ManDontGetAngryGame.Views.WinnerOverlay"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ManDontGetAngryGame.Views"
+             xmlns:enums="clr-namespace:ManDontGetAngryGame.Enums"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <Grid Background="#5c5c5c" Opacity="0.7"/>
+        <StackPanel Orientation="Horizontal" Width="600" Height="100">
+            <Image Source="../Figures/GreenFigure.PNG" Height="100"></Image>
+            <Label Content="Green Player Won!!" Margin="20,0,0,0" Foreground="White" FontSize="50" VerticalAlignment="Center" HorizontalAlignment="Center"></Label>
+
+            <StackPanel.Style>
+                <Style>
+                    <Setter Property="StackPanel.Visibility" Value="Collapsed">
+
+                    </Setter>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Winner}" Value="{x:Static enums:EActivePlayer.Green}">
+                            <Setter Property="StackPanel.Visibility" Value="Visible"></Setter>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </StackPanel.Style>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Width="600" Height="100">
+            <Image Source="../Figures/BlueFigure.PNG" Height="100"></Image>
+            <Label Content="Blue Player Won!!" Margin="20,0,0,0" Foreground="White" FontSize="50" VerticalAlignment="Center" HorizontalAlignment="Center"></Label>
+
+            <StackPanel.Style>
+                <Style>
+                    <Setter Property="StackPanel.Visibility" Value="Collapsed">
+
+                    </Setter>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Winner}" Value="{x:Static enums:EActivePlayer.Blue}">
+                            <Setter Property="StackPanel.Visibility" Value="Visible"></Setter>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </StackPanel.Style>
+        </StackPanel>
+
+    </Grid>
+</UserControl>
