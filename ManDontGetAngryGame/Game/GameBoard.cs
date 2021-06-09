@@ -28,12 +28,13 @@ namespace ManDontGetAngryGame.Game
             get{ return 11; }
         }
 
-        public GameBoard()
-        {
+        private int _totalPlayPositions = 24;
 
+        public int TotalPlayPositions
+        {
+            get { return _totalPlayPositions; }
         }
 
-        
         public event EventHandler<CellStatusChangedEventArgs> CellStatusChanged;
        
         public void InitializeBoard()
@@ -108,15 +109,28 @@ namespace ManDontGetAngryGame.Game
             SetPiece(keyFor(pos, color, type), piece);
         }
 
-        private CellId keyFor(int pos, ECellColor cellColor, ECellType cellType)
+        public CellId keyFor(int pos, ECellColor cellColor, ECellType cellType)
         {
             return CellId.Create(pos, cellColor, cellType);
         }
 
         public CellId GetPieceFromHome(ECellColor color)
         {
-            return _cells.First(cellId =>
-                cellId.Key.Color == color && cellId.Key.Type == ECellType.HomeCell).Key;
+            try
+            {
+                if (color == ECellColor.Blue)
+                {
+                    return _cells.First(cellId =>
+                        cellId.Key.Color == color && cellId.Key.Type == ECellType.HomeCell && cellId.Value.PieceColor == EPieceColor.Blue).Key;
+                }
+                return _cells.First(cellId =>
+                    cellId.Key.Color == color && cellId.Key.Type == ECellType.HomeCell && cellId.Value.PieceColor == EPieceColor.Green).Key;
+            }
+            catch (InvalidOperationException)
+            {
+                return null;
+            }
+            
         }
 
         public CellId GetStartCell(EPieceColor color)
@@ -128,15 +142,16 @@ namespace ManDontGetAngryGame.Game
             return keyFor(13, ECellColor.Green, ECellType.PlayingCell);
         }
 
-        public CellId GetFreeHomeCell(EPieceColor sourcePieceColor)
+
+        public CellId GetFreeEndCell(EPieceColor sourcePieceColor)
         {
             if (sourcePieceColor == EPieceColor.Blue)
             {
                 return _cells.First(cellId =>
-                    cellId.Key.Color == ECellColor.Blue && cellId.Key.Type == ECellType.HomeCell && cellId.Value.PieceColor == EPieceColor.None).Key;
+                    cellId.Key.Color == ECellColor.Blue && cellId.Key.Type == ECellType.EndCell && cellId.Value.PieceColor == EPieceColor.None).Key;
             }
             return _cells.First(cellId =>
-                cellId.Key.Color == ECellColor.Green && cellId.Key.Type == ECellType.HomeCell && cellId.Value.PieceColor == EPieceColor.None).Key;
+                cellId.Key.Color == ECellColor.Green && cellId.Key.Type == ECellType.EndCell && cellId.Value.PieceColor == EPieceColor.None).Key;
         }
 
 

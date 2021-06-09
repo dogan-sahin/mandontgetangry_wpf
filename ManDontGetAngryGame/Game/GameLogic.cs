@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ManDontGetAngryGame.Enums;
 using ManDontGetAngryGame.Events;
 using ManDontGetAngryGame.Model;
@@ -17,8 +13,6 @@ namespace ManDontGetAngryGame.Game
 
         private CellId _activeBlueCell;
         private CellId _activeGreenCell;
-
-        private int totalPlayPositions = 24;
 
         public CellId ActiveBlueCell
         {
@@ -43,7 +37,6 @@ namespace ManDontGetAngryGame.Game
                 }
             }
         }
-
 
         public event EventHandler<CellStatusChangedEventArgs> CellStatusChanged = delegate { };
         public event EventHandler<GameFinishedEventArgs> GameFinished = delegate { };
@@ -96,41 +89,76 @@ namespace ManDontGetAngryGame.Game
             if (activePlayer == EActivePlayer.Blue)
             {
                 sourceCell = _gameBoard.GetCell(ActiveBlueCell);
-                targetCell = _gameBoard.GetPlayingCell((sourceCell.Position + diceValue) % totalPlayPositions);
-                ActiveBlueCell = targetCell.Identifier;
+                targetCell = _gameBoard.GetPlayingCell((sourceCell.Position + diceValue) % _gameBoard.TotalPlayPositions);
 
                 if (_gameRules.IsMovedCellOccupiedByOpponent(sourceCell.Identifier, targetCell.Identifier, _gameBoard))
                 {
-                    _gameBoard.SetStartPiece(EPieceColor.Green);
-                    return;
+                    _gameBoard.MovePiece(targetCell.Identifier, _gameBoard.GetStartCell(EPieceColor.Green));
+                    ActiveGreenCell = _gameBoard.GetStartCell(EPieceColor.Green);
                 }
+
+                if (_gameRules.IsMovedCellLastPlayingCell(sourceCell.Identifier, diceValue, _gameBoard))
+                {
+                    if (_gameBoard.GetPieceFromHome(ECellColor.Blue) != null)
+                    {
+                        targetCell = _gameBoard.GetCell(_gameBoard.GetFreeEndCell(EPieceColor.Blue));
+                        _gameBoard.SetStartPiece(EPieceColor.Blue);
+                        ActiveBlueCell = _gameBoard.GetStartCell(EPieceColor.Blue);
+                        _gameBoard.MovePiece(sourceCell.Identifier, targetCell.Identifier);
+                        nextTurn();
+                        return;
+                    }
+                    else
+                    {
+                        targetCell = _gameBoard.GetCell(_gameBoard.GetFreeEndCell(EPieceColor.Blue));
+                        _gameBoard.MovePiece(sourceCell.Identifier, targetCell.Identifier);
+                        GameFinished(this, new GameFinishedEventArgs(ActivePlayer));
+                    }
+
+                }
+                ActiveBlueCell = targetCell.Identifier;
                 _gameBoard.MovePiece(sourceCell.Identifier, targetCell.Identifier);
                 nextTurn();
             }
             else
             {
                 sourceCell = _gameBoard.GetCell(ActiveGreenCell);
-                targetCell = _gameBoard.GetPlayingCell((sourceCell.Position + diceValue) % totalPlayPositions);
-                ActiveGreenCell = targetCell.Identifier;
+                targetCell = _gameBoard.GetPlayingCell((sourceCell.Position + diceValue) % _gameBoard.TotalPlayPositions);
 
                 if (_gameRules.IsMovedCellOccupiedByOpponent(sourceCell.Identifier, targetCell.Identifier, _gameBoard))
                 {
-                    _gameBoard.SetStartPiece(EPieceColor.Blue);
-                    return;
+                    _gameBoard.MovePiece(targetCell.Identifier, _gameBoard.GetStartCell(EPieceColor.Blue));
+                    ActiveBlueCell = _gameBoard.GetStartCell(EPieceColor.Blue);
                 }
+                if (_gameRules.IsMovedCellLastPlayingCell(sourceCell.Identifier, diceValue, _gameBoard))
+                {
+                    if (_gameBoard.GetPieceFromHome(ECellColor.Green) != null)
+                    {
+                        targetCell = _gameBoard.GetCell(_gameBoard.GetFreeEndCell(EPieceColor.Green));
+                        _gameBoard.SetStartPiece(EPieceColor.Green);
+                        ActiveGreenCell = _gameBoard.GetStartCell(EPieceColor.Green);
+                        _gameBoard.MovePiece(sourceCell.Identifier, targetCell.Identifier);
+                        nextTurn();
+                        return;
+                    }
+                    else
+                    {
+                        targetCell = _gameBoard.GetCell(_gameBoard.GetFreeEndCell(EPieceColor.Green));
+                        _gameBoard.MovePiece(sourceCell.Identifier, targetCell.Identifier);
+                        GameFinished(this, new GameFinishedEventArgs(ActivePlayer));
+                        return;
+                    }
+                }
+                ActiveGreenCell = targetCell.Identifier;
                 _gameBoard.MovePiece(sourceCell.Identifier, targetCell.Identifier);
                 nextTurn();
             }
-
-          
-
         }
 
         public EActivePlayer ActivePlayer
         {
             get { return _activePlayer; }
         }
-
 
     }
 }

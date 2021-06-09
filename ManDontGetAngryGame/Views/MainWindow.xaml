@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ManDontGetAngryGame"
+        xmlns:views="clr-namespace:ManDontGetAngryGame.Views"
         mc:Ignorable="d"
         Title="Awesome Man Don't Get Angry Game" Height="450" Width="700">
 
@@ -123,7 +124,7 @@
 
                         <Grid Grid.Row="1">
                             <StackPanel Orientation="Horizontal">
-                                <Label FontSize="35">Dice:</Label>
+                                <Label FontSize="35">Last Throw:</Label>
                                 <Label FontSize="35" Content="{Binding Dice}"/>
                             </StackPanel>
                         </Grid>
@@ -135,16 +136,23 @@
                                         <Label Content="Roll the dice"></Label>
                                     </StackPanel>
                                 </Button>
-                                <Button Margin="10" Height="30">
-                                    <StackPanel Orientation="Horizontal">
-                                        <Label Content="Restart Game"></Label>
-                                    </StackPanel>
-                                </Button>
                             </StackPanel>
                         </Grid>
                     </Grid>
                 </Grid>
             </Viewbox>
         </Grid>
+        <views:WinnerOverlay>
+            <views:WinnerOverlay.Style>
+                <Style>
+                    <Setter Property="views:WinnerOverlay.Visibility" Value="Collapsed"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsGameFinished}" Value="True">
+                            <Setter Property="views:WinnerOverlay.Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </views:WinnerOverlay.Style>
+        </views:WinnerOverlay>
     </Grid>
 </Window>

@@ -59,8 +59,6 @@
     <Compile Include="Converter\PieceColorToImageConverter.cs" />
     <Compile Include="Enums\EActivePlayer.cs" />
     <Compile Include="Events\GameFinishedEventArgs.cs" />
-    <Compile Include="Events\PieceFinishedEventArgs.cs" />
-    <Compile Include="Events\PieceThrownOutEventArgs.cs" />
     <Compile Include="Game\GameBoard.cs" />
     <Compile Include="Game\GameLogic.cs" />
     <Compile Include="Game\GameRules.cs" />
@@ -85,6 +83,9 @@
     <Compile Include="Events\CellStatusChangedEventArgs.cs" />
     <Compile Include="Model\CellId.cs" />
     <Compile Include="Model\CellModel.cs" />
+    <Compile Include="Views\WinnerOverlay.xaml.cs">
+      <DependentUpon>WinnerOverlay.xaml</DependentUpon>
+    </Compile>
     <Page Include="Views\GridCell.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -92,6 +93,10 @@
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\WinnerOverlay.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -131,12 +136,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Figures\GreenFigure.PNG">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Figures\RedFigure.PNG">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Figures\YellowFigure.PNG">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
