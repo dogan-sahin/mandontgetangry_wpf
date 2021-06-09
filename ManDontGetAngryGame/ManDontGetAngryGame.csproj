@@ -130,6 +130,7 @@
     <Content Include="Figures\empty.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Resource Include="CellPositions.JPG" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Figures\BlueFigure.PNG">
